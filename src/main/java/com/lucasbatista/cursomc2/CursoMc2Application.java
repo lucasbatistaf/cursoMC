@@ -1,13 +1,8 @@
 package com.lucasbatista.cursomc2;
 
-import com.lucasbatista.cursomc2.domain.Category;
-import com.lucasbatista.cursomc2.domain.City;
-import com.lucasbatista.cursomc2.domain.Product;
-import com.lucasbatista.cursomc2.domain.State;
-import com.lucasbatista.cursomc2.repository.CategoryRepository;
-import com.lucasbatista.cursomc2.repository.CityRepository;
-import com.lucasbatista.cursomc2.repository.ProductRepository;
-import com.lucasbatista.cursomc2.repository.StateRepository;
+import com.lucasbatista.cursomc2.domain.*;
+import com.lucasbatista.cursomc2.domain.enums.TypeClient;
+import com.lucasbatista.cursomc2.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +21,10 @@ public class CursoMc2Application  implements CommandLineRunner {
     private StateRepository stateRepository;
     @Autowired
     private CityRepository cityRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private AdressRepository adressRepository;
 
 
     public static void main(String[] args) {
@@ -49,6 +48,12 @@ public class CursoMc2Application  implements CommandLineRunner {
         City c2 = new City(null, "Florianópolis", sta2);
         City c3 = new City(null, "Itajai", sta2);
 
+        Client cli1 = new Client(null, "Edilson", "edilsinho666@ibest.com.br", "12301928391", TypeClient.PESSOAFISICA);
+        cli1.getTelephoneNumber().addAll(Arrays.asList("92132321","312983002"));
+
+        Adress adr1 = new Adress(null, "Rua Sim", "400", "ap 105", "Centro", "900000-000", cli1, c1);
+        Adress adr2 = new Adress(null, "Rua Nao", "200", "555", "Longe", "900300-000", cli1, c2);
+
         p1.getCategories().addAll(Arrays.asList(cat1));
         p2.getCategories().addAll(Arrays.asList(cat1, cat2));
         p3.getCategories().addAll(Arrays.asList(cat1));
@@ -63,6 +68,8 @@ public class CursoMc2Application  implements CommandLineRunner {
         productRepository.saveAll(Arrays.asList(p1, p2, p3));
         stateRepository.saveAll(Arrays.asList(sta1, sta2));
         cityRepository.saveAll(Arrays.asList(c1, c2, c3));
+        clientRepository.saveAll(Arrays.asList(cli1));
+        adressRepository.saveAll(Arrays.asList(adr1, adr2));
 
     }
 }
