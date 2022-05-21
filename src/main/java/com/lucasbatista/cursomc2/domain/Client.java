@@ -1,5 +1,6 @@
 package com.lucasbatista.cursomc2.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lucasbatista.cursomc2.domain.enums.TypeClient;
 
 import javax.persistence.*;
@@ -17,7 +18,8 @@ public class Client implements Serializable {
     private String cpfOuCnpj;
     private Integer typeClient;
 
-    @OneToMany(mappedBy = "client")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "clients")
     private List<Adress> addresses = new ArrayList<>();
 
     @ElementCollection
