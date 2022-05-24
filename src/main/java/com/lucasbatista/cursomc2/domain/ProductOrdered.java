@@ -1,5 +1,7 @@
 package com.lucasbatista.cursomc2.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import java.io.Serializable;
@@ -8,6 +10,7 @@ import java.util.Objects;
 @Entity
 public class ProductOrdered implements Serializable {
 
+    @JsonIgnore
     @EmbeddedId
     private ProductOrderedPK id = new ProductOrderedPK();
 
@@ -27,14 +30,22 @@ public class ProductOrdered implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public Ordered getOrdered(){
         return id.getOrdered();
+    }
+
+    public void setOrdered(Ordered ordered){
+        id.setOrdered(ordered);
     }
 
     public Product getProduct(){
         return id.getProduct();
     }
 
+    public void setProduct(Product product){
+        id.setProduct(product);
+    }
     public ProductOrderedPK getId() {
         return id;
     }

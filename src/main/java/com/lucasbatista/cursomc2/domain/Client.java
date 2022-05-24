@@ -1,5 +1,7 @@
 package com.lucasbatista.cursomc2.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lucasbatista.cursomc2.domain.enums.TypeClient;
 
@@ -18,7 +20,7 @@ public class Client implements Serializable {
     private String cpfOrCnpj;
     private Integer typeClient;
 
-    @JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Address> addresses = new ArrayList<>();
 
@@ -26,8 +28,9 @@ public class Client implements Serializable {
     @CollectionTable(name = "TELEPHONE_NUMBER")
     private Set<String> telephoneNumber = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
-    private List<Ordered> ordereds = new ArrayList<>();
+    private List<Ordered> ordered = new ArrayList<>();
 
 
     public Client(){
@@ -97,12 +100,12 @@ public class Client implements Serializable {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public List<Ordered> getOrdereds() {
-        return ordereds;
+    public List<Ordered> getOrdered() {
+        return ordered;
     }
 
-    public void setOrdereds(List<Ordered> ordereds) {
-        this.ordereds = ordereds;
+    public void setOrdered(List<Ordered> ordered) {
+        this.ordered = ordered;
     }
 
     @Override

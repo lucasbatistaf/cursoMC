@@ -95,7 +95,7 @@ public class CursoMc2Application  implements CommandLineRunner {
         Payment pay2 = new PaymentMoney(null, PaymentState.PENDING, ordered2, sdf.parse("20/09/2017 00:00"), null);
         ordered2.setPayment(pay2);
 
-        cli1.getOrdereds().addAll(Arrays.asList(ordered1, ordered2));
+        cli1.getOrdered().addAll(Arrays.asList(ordered1, ordered2));
 
         orderedRepository.saveAll(Arrays.asList(ordered1, ordered2));
         paymentRepository.saveAll(Arrays.asList(pay1, pay2));

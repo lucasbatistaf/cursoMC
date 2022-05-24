@@ -1,7 +1,7 @@
 package com.lucasbatista.cursomc2.resources;
 
-import com.lucasbatista.cursomc2.domain.Client;
-import com.lucasbatista.cursomc2.service.ClientService;
+import com.lucasbatista.cursomc2.domain.Ordered;
+import com.lucasbatista.cursomc2.service.OrderedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/clients")
-public class ClientResource {
+@RequestMapping(value="/ordered")
+public class OrderedResource {
 
     @Autowired
-    private ClientService service;
+    private OrderedService service;
 
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
-    public ResponseEntity<Client> find(@PathVariable Integer id){
-        Client obj = service.find(id);
+    public ResponseEntity<Ordered> find(@PathVariable Integer id){
+        Ordered obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
 

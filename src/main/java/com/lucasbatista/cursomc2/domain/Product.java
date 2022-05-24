@@ -1,6 +1,7 @@
 package com.lucasbatista.cursomc2.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +16,7 @@ public class Product implements Serializable {
     private String name;
     private Double price;
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "PRODUCT_CATEGORY",
             joinColumns = @JoinColumn(name = "product_id"),
@@ -23,6 +24,7 @@ public class Product implements Serializable {
     )
     private List<Category> categories = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id.product")
     private Set<ProductOrdered> productOrdered = new HashSet<>();
 
@@ -35,6 +37,7 @@ public class Product implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public List<Ordered> getOrder(){
         List<Ordered> orderedList = new ArrayList<>();
         for (ProductOrdered x : productOrdered){
