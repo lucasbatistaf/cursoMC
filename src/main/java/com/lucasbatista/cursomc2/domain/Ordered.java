@@ -1,0 +1,89 @@
+package com.lucasbatista.cursomc2.domain;
+
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
+
+@Entity
+public class Ordered implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private Date orderedTime;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "ordered")
+    private Payment payment;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @ManyToOne
+    @JoinColumn(name = "ordered_address_id")
+    private Address orderedAddress;
+
+    public Ordered(){}
+
+    public Ordered(Integer id, Date orderedTime, Client client, Address orderedAddress) {
+        this.id = id;
+        this.orderedTime = orderedTime;
+        this.client = client;
+        this.orderedAddress = orderedAddress;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Date getOrderedTime() {
+        return orderedTime;
+    }
+
+    public void setOrderedTime(Date orderedTime) {
+        this.orderedTime = orderedTime;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Address getOrderedAddress() {
+        return orderedAddress;
+    }
+
+    public void setOrderedAddress(Address orderedAddress) {
+        this.orderedAddress = orderedAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ordered)) return false;
+        Ordered ordered = (Ordered) o;
+        return Objects.equals(id, ordered.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+}

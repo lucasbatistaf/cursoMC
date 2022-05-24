@@ -1,14 +1,15 @@
 package com.lucasbatista.cursomc2.domain.enums;
 
-public enum TypeClient {
+public enum PaymentState {
 
-    PESSOAFISICA(1, "Pessoa Física"),
-    PESSOAJURIDICA(2, "Pessoa Jurídica");
+    PENDING(1, "Pending"),
+    PAYED(2, "Payed"),
+    CANCELED(3, "Canceled");
 
     private int cod;
     private String description;
 
-    private TypeClient(int cod, String description){
+    private PaymentState(int cod, String description){
         this.cod = cod;
         this.description = description;
     }
@@ -21,15 +22,16 @@ public enum TypeClient {
         return description;
     }
 
-    public static TypeClient toEnum(Integer cod){
+    public static PaymentState toEnum(Integer cod){
         if(cod == null){
             return null;
         }
-        for (TypeClient x : TypeClient.values()) {
+        for (PaymentState x : PaymentState.values()) {
             if(cod.equals(x.getCod())){
                 return x;
             }
         }
         throw new IllegalArgumentException("invalid id: " + cod);
     }
+
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Adress implements Serializable {
+public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,24 +21,24 @@ public class Adress implements Serializable {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private Client clients;
+    private Client client;
 
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
 
 
-    public Adress(){
+    public Address(){
     }
 
-    public Adress(Integer id, String streetName, String number, String complement, String district, String zipCode, Client clients, City city) {
+    public Address(Integer id, String streetName, String number, String complement, String district, String zipCode, Client client, City city) {
         this.id = id;
         this.streetName = streetName;
         this.number = number;
         this.complement = complement;
         this.district = district;
         this.zipCode = zipCode;
-        this.clients = clients;
+        this.client = client;
         this.city = city;
     }
 
@@ -91,11 +91,11 @@ public class Adress implements Serializable {
     }
 
     public Client getClients() {
-        return clients;
+        return client;
     }
 
     public void setClients(Client clients) {
-        this.clients = clients;
+        this.client = clients;
     }
     public City getCity() {
         return city;
@@ -108,9 +108,9 @@ public class Adress implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Adress)) return false;
-        Adress adress = (Adress) o;
-        return Objects.equals(id, adress.id);
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(id, address.id);
     }
 
     @Override

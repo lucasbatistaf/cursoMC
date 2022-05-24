@@ -15,25 +15,29 @@ public class Client implements Serializable {
     private Integer id;
     private String name;
     private String email;
-    private String cpfOuCnpj;
+    private String cpfOrCnpj;
     private Integer typeClient;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "clients")
-    private List<Adress> addresses = new ArrayList<>();
+    @OneToMany(mappedBy = "client")
+    private List<Address> addresses = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "TELEPHONE_NUMBER")
     private Set<String> telephoneNumber = new HashSet<>();
 
+    @OneToMany(mappedBy = "client")
+    private List<Ordered> ordereds = new ArrayList<>();
+
+
     public Client(){
     }
 
-    public Client(Integer id, String name, String email, String cpfOuCnpj, TypeClient typeClient) {
+    public Client(Integer id, String name, String email, String cpfOrCnpj, TypeClient typeClient) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.cpfOuCnpj = cpfOuCnpj;
+        this.cpfOrCnpj = cpfOrCnpj;
         this.typeClient = typeClient.getCod();
     }
 
@@ -61,12 +65,12 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public String getCpfOuCnpj() {
-        return cpfOuCnpj;
+    public String getcpfOrCnpj() {
+        return cpfOrCnpj;
     }
 
-    public void setCpfOuCnpj(String cpfOuCnpj) {
-        this.cpfOuCnpj = cpfOuCnpj;
+    public void setcpfOrCnpj(String cpfOrCnpj) {
+        this.cpfOrCnpj = cpfOrCnpj;
     }
 
     public TypeClient getTypeClient() {
@@ -77,11 +81,11 @@ public class Client implements Serializable {
         this.typeClient = typeClient.getCod();
     }
 
-    public List<Adress> getAddresses() {
+    public List<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Adress> addresses) {
+    public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
 
@@ -91,6 +95,14 @@ public class Client implements Serializable {
 
     public void setTelephones(Set<String> telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public List<Ordered> getOrdereds() {
+        return ordereds;
+    }
+
+    public void setOrdereds(List<Ordered> ordereds) {
+        this.ordereds = ordereds;
     }
 
     @Override
