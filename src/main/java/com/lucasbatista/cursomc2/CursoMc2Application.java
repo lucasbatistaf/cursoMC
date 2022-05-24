@@ -31,6 +31,8 @@ public class CursoMc2Application  implements CommandLineRunner {
     private OrderedRepository orderedRepository;
     @Autowired
     private PaymentRepository paymentRepository;
+    @Autowired
+    private ProductOrderedRepository productOrderedRepository;
 
 
     public static void main(String[] args) {
@@ -98,5 +100,17 @@ public class CursoMc2Application  implements CommandLineRunner {
         orderedRepository.saveAll(Arrays.asList(ordered1, ordered2));
         paymentRepository.saveAll(Arrays.asList(pay1, pay2));
 
+        ProductOrdered po1 = new ProductOrdered(ordered1, p1, 0.00, 1, 2000.00);
+        ProductOrdered po2 = new ProductOrdered(ordered1, p3, 0.00, 2, 80.00);
+        ProductOrdered po3 = new ProductOrdered(ordered1, p2, 100.00, 1, 800.00);
+
+        ordered1.getProductOrdered().addAll(Arrays.asList(po1, po2));
+        ordered2.getProductOrdered().addAll(Arrays.asList(po3));
+
+        p1.getProductOrdered().addAll(Arrays.asList(po1));
+        p2.getProductOrdered().addAll(Arrays.asList(po3));
+        p3.getProductOrdered().addAll(Arrays.asList(po2));
+
+        productOrderedRepository.saveAll(Arrays.asList(po1, po2, po3));
     }
 }

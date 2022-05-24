@@ -4,7 +4,9 @@ package com.lucasbatista.cursomc2.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Ordered implements Serializable {
@@ -24,6 +26,9 @@ public class Ordered implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ordered_address_id")
     private Address orderedAddress;
+
+    @OneToMany(mappedBy = "id.ordered")
+    private Set<ProductOrdered> productOrdered = new HashSet<>();
 
     public Ordered(){}
 
@@ -72,6 +77,14 @@ public class Ordered implements Serializable {
 
     public void setOrderedAddress(Address orderedAddress) {
         this.orderedAddress = orderedAddress;
+    }
+
+    public Set<ProductOrdered> getProductOrdered() {
+        return productOrdered;
+    }
+
+    public void setProductOrdered(Set<ProductOrdered> productOrdered) {
+        this.productOrdered = productOrdered;
     }
 
     @Override
