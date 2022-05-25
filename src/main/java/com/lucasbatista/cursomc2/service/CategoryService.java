@@ -2,8 +2,10 @@ package com.lucasbatista.cursomc2.service;
 
 import com.lucasbatista.cursomc2.domain.Category;
 import com.lucasbatista.cursomc2.repository.CategoryRepository;
+import com.lucasbatista.cursomc2.service.exceptions.DataIntegrityException;
 import com.lucasbatista.cursomc2.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -28,5 +30,15 @@ public class CategoryService {
     public Category update(Category obj){
         find(obj.getId());
         return repo.save(obj);
+    }
+
+    public void delete(Integer id){
+        find(id);
+        try{
+            repo.deleteById(id);
+        }
+        catch(DataIntegrityViolationException e){
+            throw new DataIntegrityException("Not possible to delete Category " + id + ", because it's linked to a Product");
+        }
     }
 }
