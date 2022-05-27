@@ -1,6 +1,7 @@
 package com.lucasbatista.cursomc2.service;
 
 import com.lucasbatista.cursomc2.domain.Category;
+import com.lucasbatista.cursomc2.dto.CategoryDTO;
 import com.lucasbatista.cursomc2.repository.CategoryRepository;
 import com.lucasbatista.cursomc2.service.exceptions.DataIntegrityException;
 import com.lucasbatista.cursomc2.service.exceptions.ObjectNotFoundException;
@@ -52,5 +53,9 @@ public class CategoryService {
     public Page<Category> findPage(Integer page, Integer linesPerPage, String direction, String orderBy){
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return repo.findAll(pageRequest);
+    }
+
+    public  Category fromDTO(CategoryDTO objDTO){
+        return new Category(objDTO.getId(), objDTO.getName());
     }
 }
