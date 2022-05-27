@@ -44,6 +44,11 @@ public class CursoMc2Application  implements CommandLineRunner {
 
         Category cat1 = new Category(null, "Informatica");
         Category cat2 = new Category(null, "Escritorio");
+        Category cat3 = new Category(null, "Banheiro");
+        Category cat4 = new Category(null, "Lavanderia");
+        Category cat5 = new Category(null, "Cozinha");
+        Category cat6 = new Category(null, "Exterior");
+        Category cat7 = new Category(null, "Garagem");
 
         Product p1 = new Product(null, "Computador", 2000.00);
         Product p2 = new Product(null, "Impressora", 800.00);
@@ -56,7 +61,7 @@ public class CursoMc2Application  implements CommandLineRunner {
         cat1.getProducts().addAll(Arrays.asList(p1, p2, p3));
         cat2.getProducts().addAll(Arrays.asList(p2));
 
-        categoryRepository.saveAll(Arrays.asList(cat1, cat2));
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
         productRepository.saveAll(Arrays.asList(p1, p2, p3));
 
         State sta1 = new State(null,"RS");
