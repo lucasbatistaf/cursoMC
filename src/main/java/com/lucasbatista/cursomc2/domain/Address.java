@@ -1,6 +1,5 @@
 package com.lucasbatista.cursomc2.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -27,7 +26,6 @@ public class Address implements Serializable {
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
-
 
     public Address(){
     }
@@ -91,12 +89,12 @@ public class Address implements Serializable {
         this.zipCode = zipCode;
     }
 
-    public Client getClients() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClients(Client clients) {
-        this.client = clients;
+    public void setClient(Client client) {
+        this.client = client;
     }
     public City getCity() {
         return city;

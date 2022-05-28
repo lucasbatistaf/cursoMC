@@ -20,8 +20,7 @@ public class Client implements Serializable {
     private String cpfOrCnpj;
     private Integer typeClient;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Address> addresses = new ArrayList<>();
 
     @ElementCollection
@@ -41,7 +40,7 @@ public class Client implements Serializable {
         this.name = name;
         this.email = email;
         this.cpfOrCnpj = cpfOrCnpj;
-        this.typeClient = typeClient.getCod();
+        this.typeClient = ((typeClient == null) ? null : typeClient.getCod());
     }
 
     public Integer getId() {
