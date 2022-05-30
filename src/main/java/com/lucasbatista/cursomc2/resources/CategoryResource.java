@@ -2,8 +2,7 @@ package com.lucasbatista.cursomc2.resources;
 
 import com.lucasbatista.cursomc2.domain.Category;
 import com.lucasbatista.cursomc2.dto.CategoryDTO;
-import com.lucasbatista.cursomc2.service.CategoryService;
-import org.apache.coyote.Response;
+import com.lucasbatista.cursomc2.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

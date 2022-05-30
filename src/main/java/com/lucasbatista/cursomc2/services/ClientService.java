@@ -1,4 +1,4 @@
-package com.lucasbatista.cursomc2.service;
+package com.lucasbatista.cursomc2.services;
 
 import com.lucasbatista.cursomc2.domain.Address;
 import com.lucasbatista.cursomc2.domain.City;
@@ -7,8 +7,8 @@ import com.lucasbatista.cursomc2.domain.enums.TypeClient;
 import com.lucasbatista.cursomc2.dto.ClientDTO;
 import com.lucasbatista.cursomc2.dto.ClientNewDTO;
 import com.lucasbatista.cursomc2.repository.ClientRepository;
-import com.lucasbatista.cursomc2.service.exceptions.DataIntegrityException;
-import com.lucasbatista.cursomc2.service.exceptions.ObjectNotFoundException;
+import com.lucasbatista.cursomc2.services.exceptions.DataIntegrityException;
+import com.lucasbatista.cursomc2.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;

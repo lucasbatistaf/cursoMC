@@ -1,20 +1,38 @@
 package com.lucasbatista.cursomc2.dto;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 public class ClientNewDTO implements Serializable {
 
+    @NotEmpty(message = "Please, insert a name")
+    @Length(min = 5, max = 120, message = "Size must be 5 up to 120")
     private String name;
+
+    @NotEmpty(message = "Please insert a email")
+    @Email(message = "Invalid Email")
     private String email;
+
+    @NotEmpty(message = "Please insert a CPF or CNPJ")
     private String cpfOrCnpj;
     private Integer typeClient;
 
+    @NotEmpty(message = "Please insert a street name")
     private String streetName;
+
+    @NotEmpty(message = "Please insert a street number")
     private String number;
     private String complement;
     private String district;
+
+    @NotEmpty(message = "Please insert a zipcode")
     private String zipCode;
 
+
+    @NotEmpty(message = "Please insert a telephone number")
     private String telephoneNumber1;
     private String telephoneNumber2;
     private String telephoneNumber3;

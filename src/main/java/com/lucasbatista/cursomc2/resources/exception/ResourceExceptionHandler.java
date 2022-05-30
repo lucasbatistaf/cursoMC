@@ -1,7 +1,7 @@
 package com.lucasbatista.cursomc2.resources.exception;
 
-import com.lucasbatista.cursomc2.service.exceptions.DataIntegrityException;
-import com.lucasbatista.cursomc2.service.exceptions.ObjectNotFoundException;
+import com.lucasbatista.cursomc2.services.exceptions.DataIntegrityException;
+import com.lucasbatista.cursomc2.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

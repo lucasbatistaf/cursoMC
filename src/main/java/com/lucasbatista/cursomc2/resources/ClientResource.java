@@ -3,7 +3,7 @@ package com.lucasbatista.cursomc2.resources;
 import com.lucasbatista.cursomc2.domain.Client;
 import com.lucasbatista.cursomc2.dto.ClientDTO;
 import com.lucasbatista.cursomc2.dto.ClientNewDTO;
-import com.lucasbatista.cursomc2.service.ClientService;
+import com.lucasbatista.cursomc2.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

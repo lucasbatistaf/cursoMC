@@ -1,10 +1,10 @@
-package com.lucasbatista.cursomc2.service;
+package com.lucasbatista.cursomc2.services;
 
 import com.lucasbatista.cursomc2.domain.Category;
 import com.lucasbatista.cursomc2.dto.CategoryDTO;
 import com.lucasbatista.cursomc2.repository.CategoryRepository;
-import com.lucasbatista.cursomc2.service.exceptions.DataIntegrityException;
-import com.lucasbatista.cursomc2.service.exceptions.ObjectNotFoundException;
+import com.lucasbatista.cursomc2.services.exceptions.DataIntegrityException;
+import com.lucasbatista.cursomc2.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;

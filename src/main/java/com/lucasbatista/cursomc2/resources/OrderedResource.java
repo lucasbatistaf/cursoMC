@@ -1,7 +1,7 @@
 package com.lucasbatista.cursomc2.resources;
 
 import com.lucasbatista.cursomc2.domain.Ordered;
-import com.lucasbatista.cursomc2.service.OrderedService;
+import com.lucasbatista.cursomc2.services.OrderedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

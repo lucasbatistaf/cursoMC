@@ -1,8 +1,8 @@
-package com.lucasbatista.cursomc2.service;
+package com.lucasbatista.cursomc2.services;
 
 import com.lucasbatista.cursomc2.domain.Ordered;
 import com.lucasbatista.cursomc2.repository.OrderedRepository;
-import com.lucasbatista.cursomc2.service.exceptions.ObjectNotFoundException;
+import com.lucasbatista.cursomc2.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
